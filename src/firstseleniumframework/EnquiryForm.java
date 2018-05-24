@@ -1,8 +1,13 @@
 package firstseleniumframework;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +16,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class EnquiryForm {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.setProperty("webdriver.gecko.driver", "../selenium/geckodriver");
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().window().maximize();
@@ -93,6 +98,7 @@ public class EnquiryForm {
 		
 		// Click on the Submit button
 		driver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
+		
 	
 		// Making the Browser wait for some time (10 Seconds)
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -106,6 +112,10 @@ public class EnquiryForm {
 		String messageText = readMessageAtTop.getText();
 		System.out.println(messageText);
 		
+		// Take a screenshot before we Submit
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("/Users/sabbi0612/Desktop/IMG.png"));
+
 		driver.quit();
 
 	}
