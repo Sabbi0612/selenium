@@ -113,8 +113,8 @@ public class EnquiryForm {
 		System.out.println(messageText);
 		
 		// Take a screenshot before we Submit
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("/Users/sabbi0612/Desktop/IMG.png"));
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("/Users/sabbi0612/Desktop/IMG.png"));
 
 		driver.quit();
 
